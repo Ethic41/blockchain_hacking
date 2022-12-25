@@ -29,3 +29,4 @@ contract AttackElevator {
         elevatorContract.goTo(100);
     }
 }
+
