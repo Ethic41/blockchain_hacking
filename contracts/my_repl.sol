@@ -24,4 +24,11 @@ contract Repl {
         return value1 ^ value2;
     }
 
+    function paynow(address to, uint amount) public {
+        (bool success, ) = to.call{value: amount}("");
+        success;
+    }
+
+    receive() external payable {}
+
 }
