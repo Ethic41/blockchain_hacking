@@ -12,7 +12,7 @@ contract AttackFallback {
     }
 
     function makeContribution() public {
-        fallbackContract.contribuite{value: 3 wei}();
+        fallbackContract.contribute{value: 3 wei}();
     }
 
     function getContribution() public view returns (uint) {
