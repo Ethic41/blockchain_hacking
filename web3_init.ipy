@@ -1,0 +1,16 @@
+# coding: utf-8
+from web3 import Web3
+from os import getenv
+g_net = Web3(Web3.HTTPProvider("https://rpc.ankr.com/eth_goerli"))
+net = g_net.eth
+my_address = getenv("pb_key")
+key = getenv("pv_key")
+def nonce():
+    return net.get_transaction_count(my_address)
+g_net.isConnected()
+def sign_txn(txn):
+    return net.account.sign_transaction(txn, key)
+    
+def send_raw_txn(signed_txn):
+    return net.send_raw_transaction(signed_txn.rawTransaction)
+    
